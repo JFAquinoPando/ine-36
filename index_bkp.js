@@ -9,7 +9,7 @@ aplicacion.use(express.json())
 const PUERTO = 3000
 
 aplicacion.get("/", (peticion, respuesta) => {
-    respuesta.send("Hola")
+    respuesta.send("Hola a todos")
 })
 
 aplicacion.get("/usuarios", async (peticion, respuesta) => {
