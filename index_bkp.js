@@ -6,7 +6,7 @@ const aplicacion = express()
 aplicacion.use(cors())
 aplicacion.use(express.json())
 
-const PUERTO = 3000
+const PUERTO = process.env.PORT || 3000
 
 aplicacion.get("/", (peticion, respuesta) => {
     respuesta.send("Hola a todos")
@@ -14,12 +14,12 @@ aplicacion.get("/", (peticion, respuesta) => {
 
 aplicacion.get("/usuarios", async (peticion, respuesta) => {
     try {
-        const usuarioObjeto = {
+       /*  const usuarioObjeto = {
             data: {
                 email: 'prueba1@idt.com.py',
                 edad: 47
             },
-        }
+        } */
 
         
 
@@ -30,9 +30,22 @@ aplicacion.get("/usuarios", async (peticion, respuesta) => {
         console.log("usuario actualizado2", actualizarUser2); */
 
 
-        const crearUser = await prisma.usuario.create(usuarioObjeto)
+        /* const crearUser = await prisma.usuario.create(usuarioObjeto)
         respuesta.send(crearUser)
-        console.log("Usuario creado", crearUser);
+        console.log("Usuario creado", crearUser); */
+
+        const listarUsers = await prisma.usuario.findMany({
+            where: {
+                edad: {
+                    isSet : false
+                }
+            }
+        })
+        console.log({
+            "mensaje": "Mostrando usuarios",
+            "listado" : listarUsers
+        });
+        respuesta.send(listarUsers)
 
 
     } catch (error) {
