@@ -37,7 +37,7 @@ aplicacion.get("/usuarios", async (peticion, respuesta) => {
         const listarUsers = await prisma.usuario.findMany({
             where: {
                 edad: {
-                    isSet : false
+                    isSet : true
                 }
             }
         })
