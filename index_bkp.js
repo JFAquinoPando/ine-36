@@ -42,6 +42,9 @@ aplicacion.get("/usuarios", async (peticion, respuesta) => {
     }
 })
 
+aplicacion.listen(PUERTO, () => {
+    console.log("Aplicacion corrieno en el puerto", PUERTO);
+})
 
 /* (
     async () => {
