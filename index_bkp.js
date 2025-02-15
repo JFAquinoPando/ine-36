@@ -42,7 +42,7 @@ aplicacion.get("/usuarios", async (peticion, respuesta) => {
             }
         })
         console.log({
-            "mensaje": "Mostrando usuarios",
+            "mensaje": "Mostrando listado de usuarios",
             "listado" : listarUsers
         });
         respuesta.send(listarUsers)
